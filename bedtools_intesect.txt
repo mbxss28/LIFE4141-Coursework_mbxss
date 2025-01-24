@@ -1,0 +1,16 @@
+conda install bedtools #loades packages required for this analysis
+conda install AGAT
+
+#converts gff3 file to bed file to allow for bedtools to perform intesection
+
+agat_convert_sp_gff2bed.pl --gff C_excelsa_V5_braker2_wRseq.gff3 -o Annotation2.bed
+
+
+#looks for intersections between the genomics loci of top scoring Fst values for the NENT-LAB analysis and C_excelsa_V5_braker2_wRseq.gff3
+
+
+bedtools intersect -a FSTNENT.bed -b Annotation2.bed -wa -wb > IntersectNENT.bed 
+
+#repeats the above step but with the ODN-LAB analysis
+
+bedtools intersect -a FSTODN.bed -b Annotation2.bed -wa -wb > IntersectODN.bed 
