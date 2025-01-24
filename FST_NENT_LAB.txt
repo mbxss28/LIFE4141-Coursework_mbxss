@@ -1,0 +1,8 @@
+#Code used for vcftools for the Fst window scan of LAB vs NENT contrast
+
+vcftools --gzvcf LAB_NEN_ODN.clean_BI.ann.3mbChr5.vcf \ --max-missing 0.8 \ --maf 0.05 \ 
+           --weir-fst-pop LAB_population.txt \ --weir-fst-pop ODN_population.txt \ fst-window-size 1000
+
+#--max-missing 0.8 filters sites with less than more than 20% missing data
+#--maf 0.05 is the missing minor allele frequencey, with SNPs with maf >= 0.05 being excluded
+#--fst-window 1000 means that 1k window will not overlap.
